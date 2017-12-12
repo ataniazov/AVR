@@ -8,7 +8,7 @@ CLOCK      = 16000000
 BAUD       = 19200
 
 # avrdude command and its options
-AVRDUDE    = avrdude -C avrdude.conf -p m328p -c stk500v1 -P /dev/ttyACM2 -b $(BAUD) -v -e -D
+AVRDUDE    = avrdude -C avrdude.conf -p m328p -c avrisp -P /dev/ttyACM0 -b $(BAUD) -v -e -D
 
 OBJECTS    = main.o
 

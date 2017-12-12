@@ -4,13 +4,32 @@
 
 #define LED_PIN 5
 
-int main() {
-	DDRB |= 1 << LED_PIN;	
-	while(1) {
-		PORTB |= 1 << LED_PIN;
-		_delay_ms(1000);
-		PORTB &= ~(1 << LED_PIN);
-		_delay_ms(1000);
-	}
+void init(void);
+void setup(void);
+void loop(void);
+
+int main(void) {
+
+	init();
+
+	setup();
+
+	for (;;)
+		loop();
+
 	return 0;
+}
+
+void init() {
+}
+
+void setup() {
+	DDRB |= 1 << LED_PIN;	
+}
+
+void loop() {
+	PORTB |= 1 << LED_PIN;
+	_delay_ms(1000);
+	PORTB &= ~(1 << LED_PIN);
+	_delay_ms(1000);
 }
