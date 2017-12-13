@@ -1,0 +1,2 @@
+C:\avrdude\avrdude.exe
+-C "C:\avrdude\avrdude.conf" -v -p atmega328p -c stk500v1 -P COM3 -b 19200 -U flash:w:"$(ProjectDir)Debug\$(TargetName).hex":i
