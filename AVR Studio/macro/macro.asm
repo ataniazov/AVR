@@ -7,35 +7,29 @@
 		sbci @2,high(@0)	; Subtract high byte
 .ENDM						; End macro definition
 ;= End macro.inc ============================================
+
+.def counter = R0
+.def temporary = R16
+.undef temporary
+
+.equ Time = 5
+.equ Accelerate = 4
+.equ Half_Speed = (Accelerate*Time)/2
 
 ; RAM =======================================================
-			.DSEG					; RAM segment
+			.DSEG					; RAM segment
+var1:		.BYTE 1
+table:		.BYTE 10
 ; FLASH =====================================================
-			.CSEG					; Code segment
-			NOP
-
-			.ORG 0x0010
-
-M1:			NOP
-			NOP
-			LDI	ZL,low(M2)
-			LDI ZH,High(M2)
-
-			IJMP
-
-			NOP
-			NOP
-			NOP
-M2:			NOP
-
-			RJMP PC+3
-			NOP
-			NOP
-			RJMP M1
-			NOP
-
-			JMP 0x0000
-
+			.CSEG					; Code segment
+			NOP
+
+Constant:	.db		10	; 0xAh hexadecimal
+Message:	.db 	"Hello, World!"
+Words:		.dw		10, 11, 12
+
+label:		LDI		R16,'A'
+			RJMP	label
 ; EEPROM ====================================================
 			.ESEG					; EEPROM segment
 ;============================================================
